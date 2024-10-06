@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/models/task.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/providers/user_tasks.dart';
 
-class NewTask extends StatefulWidget {
-  const NewTask({super.key, required this.onAddTask});
-
-  final void Function(Task task) onAddTask;
+class NewTask extends ConsumerStatefulWidget {
+  const NewTask({
+    super.key,
+  });
 
   @override
-  State<NewTask> createState() => _NewTaskState();
+  ConsumerState<NewTask> createState() => _NewTaskState();
 }
 
-class _NewTaskState extends State<NewTask> {
+class _NewTaskState extends ConsumerState<NewTask> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
 
@@ -38,11 +39,12 @@ class _NewTaskState extends State<NewTask> {
               )));
       return;
     } else {
-      widget.onAddTask(
-        Task(
-            title: _titleController.text,
-            description: _descriptionController.text),
-      );
+      // Correctly accessing ref to update the state
+      ref.read(userTasksProvider.notifier).addTasks(
+            _titleController.text,
+            _descriptionController.text,
+          );
+
       Navigator.of(context).pop();
     }
   }

@@ -10,10 +10,20 @@ class TaskList extends StatelessWidget {
   });
 
   final List<Task> tasksList;
-  final void Function(Task task, int index) onRemoveTask;
+  final void Function(Task task) onRemoveTask;
 
   @override
   Widget build(BuildContext context) {
+    if (tasksList.isEmpty) {
+      return Center(
+        child: Text(
+          'No Tasks added yet.',
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+        ),
+      );
+    }
     return ListView.builder(
       itemCount: tasksList.length,
       itemBuilder: (ctx, index) {
@@ -23,7 +33,7 @@ class TaskList extends StatelessWidget {
             color: Theme.of(context).colorScheme.error.withOpacity(0.4),
           ),
           onDismissed: (direction) {
-            onRemoveTask(tasksList[index], index);
+            onRemoveTask(tasksList[index]);
           },
           child: TaskCard(
             task: tasksList[index],
