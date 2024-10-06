@@ -1,16 +1,12 @@
-# todo_app
+Flutter Todo App
+A simple todo app built using Flutter, where tasks can be added and deleted. The app uses Riverpod for state management and SQLite for permanent data storage.
 
-A new Flutter project.
+Features
+. Add Task: Add a new task with a title and description.
+. Delete Task: Remove tasks from the list.
+. Persistent Storage: All tasks are stored in SQLite and retained even after closing the app.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Tech Stack
+. Flutter: Front-end framework for building the app.
+. Riverpod: For managing the app's state.
+. SQLite: To store tasks permanently.
