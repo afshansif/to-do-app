@@ -1,4 +1,5 @@
 Flutter Todo App
+
 A simple todo app built using Flutter, where tasks can be added and deleted. The app uses Riverpod for state management and SQLite for permanent data storage.
 
 Features
